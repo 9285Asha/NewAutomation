@@ -12,239 +12,227 @@ public class Demo8
 		launchBrowser();
 		navigate();
 		login();
-		minimizeFlyOutWindow();
+		popupwindow();
 		createcustomer();
 		createproject();
-		createtasks();
-		modifyproject();
-		deletetasks();
+		createtask();
+		modifytask();
+		deletetask();
 		deleteproject();
 		deletecustomer();
 		logout();
-		closeApplication();
+		closeapplication();
+
 	}
-	public static void launchBrowser()
+	static void launchBrowser()
 	{
+		String path = null;
 		try
 		{
-			String path=System.getProperty("user.dir");
-			System.setProperty("webdriver.chrome.driver", path+"\\Library\\drivers\\chromedriver.exe");
-			oBrowser=new ChromeDriver();
+			path = System.getProperty("user.dir");
+			System.setProperty("webdriver.chrome.driver",path+"\\Library\\drivers\\chromedriver.exe");
+			oBrowser= new ChromeDriver();
+			Thread.sleep(2000);
 			oBrowser.manage().window().maximize();
-		}catch(Exception e)
+		}
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-	public static void navigate()
+	static void navigate()
 	{
 		try
 		{
 			oBrowser.get("http://localhost/login.do");
-		}catch(Exception e)
+			Thread.sleep(2000);
+		}
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-	public static void login()
+	static void login()
 	{
 		try
 		{
 			oBrowser.findElement(By.id("username")).sendKeys("admin");
+			Thread.sleep(2000);
 			oBrowser.findElement(By.name("pwd")).sendKeys("manager");
-			oBrowser.findElement(By.xpath("//*[@id='loginButton']/div")).click();
-			Thread.sleep(5000);
-		}catch(Exception e)
-		{
-			e.printStackTrace();
-		}try 
-		{
-			oBrowser.findElement(By.xpath("//a[@href='/tasks/tasklist.do']")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//div[@class='downIcon']")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'loginButton\']/div")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//div[@class='item createNewCustomer ellipsis']")).click();
-			Thread.sleep(2000);
-			oBrowser.findElement(By.id("customerLightBox_nameField")).sendKeys("User1");
-			Thread.sleep(2000);
-			oBrowser.findElement(By.id("customerLightBox_commitBtn")).click();
 		}
-		catch (Exception e) 
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-	public static void minimizeFlyOutWindow()
+	static void popupwindow()
 	{
 		try
 		{
-			oBrowser.findElement(By.id("gettingStartedShortcutsPanelId")).click();
+			oBrowser.findElement(By.id("gettingStartedShortcutsMenuCloseId")).click();
 			Thread.sleep(2000);
-		}catch(Exception e)
+		}
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
 	static void createcustomer()
 	{
-		try 
+		try
 		{
-			oBrowser.findElement(By.xpath("//a[@href='/tasks/tasklist.do']")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'topnav\']/tbody/tr[1]/td[3]/a")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//div[@class='downIcon']")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'cpTreeBlock\']/div[2]/div[1]/div[2]/div/div[2]")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//div[@class='item createNewCustomer ellipsis']")).click();
+			oBrowser.findElement(By.xpath("/html/body/div[14]/div[1]")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.id("customerLightBox_nameField")).sendKeys("User1");
+			oBrowser.findElement(By.id("customerLightBox_nameField")).sendKeys("Customer1");
 			Thread.sleep(2000);
-			oBrowser.findElement(By.id("customerLightBox_commitBtn")).click();
+			oBrowser.findElement(By.xpath("//*[@id='customerLightBox_commitBtn']/div/span")).click();
+			Thread.sleep(2000);
 		}
-		catch (Exception e) 
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
 	static void createproject()
 	{
-		try 
+		try
 		{
-			oBrowser.findElement(By.xpath("//*[@id='cpTreeBlock']/div[2]/div[1]/div[2]/div/div[2]")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'cpTreeBlock\']/div[2]/div[1]/div[2]/div/div[2]")).click();
 			Thread.sleep(2000);
 			oBrowser.findElement(By.xpath("/html/body/div[14]/div[2]")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.id("projectPopup_projectNameField")).sendKeys("Project");
+			oBrowser.findElement(By.id("projectPopup_projectNameField")).sendKeys("Project 1");
 			Thread.sleep(2000);
-			//c1.findElement(By.xpath("//button[text()='-- Please Select Customer to Add Project for  --']")).click();
-			Thread.sleep(2000);
-			//	c1.findElement(By.xpath("//*[@id=\'ext-gen187\']")).click();
-			oBrowser.findElement(By.xpath("//*[@id=\'projectPopup_commitBtn\']/div/span")).click();
+			oBrowser.findElement(By.xpath("//*[@id='projectPopup_commitBtn']/div")).click();
 			Thread.sleep(2000);
 		}
-		catch (Exception e) 
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-	static void createtasks()
+	static void createtask()
 	{
-		try 
+		try
 		{
-			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[1]/div[1]/div[3]/div")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'cpTreeBlock\']/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div[3]/div[2]")).click();
+			Thread.sleep(2000);
+			oBrowser.findElement(By.xpath("//*[@id=\'taskListBlock\']/div[1]/div[1]/div[3]/div/div[2]")).click();
 			Thread.sleep(2000);
 			oBrowser.findElement(By.xpath("/html/body/div[13]/div[1]")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='createTasksPopup_createTasksTableContainer']/table/tbody/tr[1]/td[1]/input")).sendKeys("Example");
+			oBrowser.findElement(By.xpath("//*[@id=\'createTasksPopup_createTasksTableContainer\']/table/tbody/tr[1]/td[1]/input")).sendKeys("task 1");
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id=\"createTasksPopup_commitBtn\"]/div")).click();
-			Thread.sleep(2000);
-			oBrowser.findElement(By.id("gettingStartedShortcutsMenuCloseId")).click();
-			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[1]/div[2]/div[1]/table[2]/tbody/tr/td[2]/div/div[2]")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'createTasksPopup_commitBtn\']/div")).click();
 			Thread.sleep(2000);
 		}
-		catch (Exception e) 
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-	static void modifyproject()
+	
+	static void modifytask()
 	{
-		try 
+		try
 		{
-			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[1]/div[2]/div[1]/table[1]/tbody/tr/td[2]/div/div[2]")).click();
+			oBrowser.findElement(By.xpath("//div[text()='task 1']")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[3]/div[2]/div[1]/div[2]/div[3]/div[1]")).click();
+			oBrowser.findElement(By.xpath("//*[starts-with(@placeholder,'Enter task description...')]")).sendKeys("Good Morning");
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[3]/div[2]/div[1]/div[2]/div[3]/div[2]/div/div[1]/textarea")).sendKeys("Testing");
+			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[3]/div[1]/div[1]")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id=\'taskListBlock\']/div[1]/div[2]/div[1]/table[1]/tbody/tr/td[2]/div")).click();
-			Thread.sleep(4000);
-			//oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[3]/div[1]/div[2]/div[3]/div/div")).click();
-			//Thread.sleep(4000);
 		}
-		catch (Exception e) 
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-	static void deletetasks()
+	
+	static void deletetask()
 	{
-		try 
+		try
 		{
-			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[1]/div[2]/div[1]/table[1]/tbody/tr/td[2]/div/div[2]")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'taskListBlock\']/div[1]/div[2]/div[1]/table[1]/tbody/tr/td[2]")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[3]/div[1]/div[2]/div[3]/div/div")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'taskListBlock\']/div[3]/div[1]/div[2]/div[3]/div/div")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[3]/div[4]/div/div[3]/div")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'taskListBlock\']/div[3]/div[4]/div/div[3]/div")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='taskPanel_deleteConfirm_submitTitle']")).click();
+			oBrowser.findElement(By.id("taskPanel_deleteConfirm_submitTitle")).click();
 			Thread.sleep(2000);
 		}
-		catch (Exception e) 
+		catch(Exception e)
 		{
-			
+			e.printStackTrace();
 		}
 	}
 	static void deleteproject()
 	{
-		try 
+		try
 		{
-			oBrowser.findElement(By.xpath("//*[@id='cpTreeBlock']/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div[3]/div[3]")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'cpTreeBlock\']/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div[3]/div[3]")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[4]/div[1]/div[2]/div[3]/div/div")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'taskListBlock\']/div[4]/div[1]/div[2]/div[3]/div/div")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[4]/div[4]/div/div[3]/div")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'taskListBlock\']/div[4]/div[4]/div/div[3]/div")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='projectPanel_deleteConfirm_submitTitle']")).click();
+			oBrowser.findElement(By.id("projectPanel_deleteConfirm_submitTitle")).click();
 			Thread.sleep(2000);
-			//	c1.findElement(By.id("projectPanel_deleteConfirm_submitTitle")).click();
-			//oBrowser.findElement(By.xpath("//*[@id=\'projectPanel_deleteConfirm_submitBtn\']/div")).click();
-			//Thread.sleep(2000);
 		}
-		catch (Exception e) 
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
 	static void deletecustomer()
 	{
-		try 
+		try
 		{
 			oBrowser.findElement(By.xpath("//*[@id='cpTreeBlock']/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div[2]/div[4]")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[2]/div[1]/div[4]/div/div")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'taskListBlock\']/div[2]/div[1]/div[4]/div/div")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='taskListBlock']/div[2]/div[4]/div/div[3]/div")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'taskListBlock\']/div[2]/div[4]/div/div[3]/div")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//*[@id='customerPanel_deleteConfirm_submitTitle']")).click();
+			oBrowser.findElement(By.id("customerPanel_deleteConfirm_submitTitle")).click();
 			Thread.sleep(2000);
+			
 		}
-		catch (Exception e) 
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
 	static void logout()
 	{
-		try 
+		try
 		{
 			oBrowser.findElement(By.id("logoutLink")).click();
 			Thread.sleep(2000);
 		}
-		catch (Exception e) 
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	static void closeapplication()
+	{
+		try
+		{
+			oBrowser.close();
+		}
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
 
-	public static void closeApplication()
-	{
-		try
-		{
-			oBrowser.close();
-		}catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
 }
