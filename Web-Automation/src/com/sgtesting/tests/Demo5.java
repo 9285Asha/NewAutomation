@@ -54,22 +54,8 @@ public class Demo5
 		}catch(Exception e)
 		{
 			e.printStackTrace();
-		}try 
-		{
-			oBrowser.findElement(By.xpath("//a[@href='/tasks/tasklist.do']")).click();
-			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//div[@class='downIcon']")).click();
-			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//div[@class='item createNewCustomer ellipsis']")).click();
-			Thread.sleep(2000);
-			oBrowser.findElement(By.id("customerLightBox_nameField")).sendKeys("User1");
-			Thread.sleep(2000);
-			oBrowser.findElement(By.id("customerLightBox_commitBtn")).click();
 		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
+		
 	}
 	public static void minimizeFlyOutWindow()
 	{
@@ -84,19 +70,20 @@ public class Demo5
 	}
 	static void createcustomer()
 	{
-		try 
+		try
 		{
-			oBrowser.findElement(By.xpath("//a[@href='/tasks/tasklist.do']")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'topnav\']/tbody/tr[1]/td[3]/a")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//div[@class='downIcon']")).click();
+			oBrowser.findElement(By.xpath("//*[@id=\'cpTreeBlock\']/div[2]/div[1]/div[2]/div/div[2]")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.xpath("//div[@class='item createNewCustomer ellipsis']")).click();
+			oBrowser.findElement(By.xpath("/html/body/div[14]/div[1]")).click();
 			Thread.sleep(2000);
-			oBrowser.findElement(By.id("customerLightBox_nameField")).sendKeys("User1");
+			oBrowser.findElement(By.id("customerLightBox_nameField")).sendKeys("Customer1");
 			Thread.sleep(2000);
-			oBrowser.findElement(By.id("customerLightBox_commitBtn")).click();
+			oBrowser.findElement(By.xpath("//*[@id='customerLightBox_commitBtn']/div/span")).click();
+			Thread.sleep(2000);
 		}
-		catch (Exception e) 
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}

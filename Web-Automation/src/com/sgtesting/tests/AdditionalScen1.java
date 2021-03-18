@@ -29,15 +29,15 @@ public class AdditionalScen1
 		loginaschangepassworduser1();
 		logout();
 		loginasuser2();
-		//deleteuser3();
-		//logout();
-		//loginaschangepassworduser1();
-		//deleteuser2();
-		//logout();
-		//login();
-		//deleteuser1();
-		//logout();
-		//closeapplication();
+		deleteuser3();
+		logout();
+		loginaschangepassworduser1();
+		deleteuser2();
+		logout();
+		login();
+		deleteuser1();
+		logout();
+		closeapplication();
 		
 	}
 	public static void launchBrowser()
